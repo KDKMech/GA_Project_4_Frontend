@@ -1,12 +1,10 @@
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Home = () => {
     return (
-        <>
-            <img src="../../public/images/logo.png"/>
-
-            <p>center items</p>
-        </>
+        <div className="bg-white">
+            <img className="rounded mx-auto d-block" src="../../public/images/logo.png"/>
+        </div>
     )
 }
 
