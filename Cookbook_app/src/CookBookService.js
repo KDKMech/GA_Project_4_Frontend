@@ -1,45 +1,35 @@
-const DjangoAPI = '34.228.156.43:8000/api/recipe'
+const DjangoAPI = 'http://34.228.156.43:8000/api/recipe';
 
-
-
-// get request
-
+// Get request
 export const getRecipesFromDjango = async () => {
-    
     try {
-        const Response = await fetch(DjangoAPI)
-        const data = await Response.json();
+        const response = await fetch(DjangoAPI);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
         console.log(data);
         return data;
+    } catch (error) {
+        console.error("Failed to fetch recipes:", error.message);
+        return { error: error.message };
     }
-    catch (error) {
-        console.error("you are dumb");
-        
-    }
-    
-}
+};
 
+// Delete request
 export const deleteRecipesFromDjango = async () => {
     try {
-        const Response = await fetch(DjangoAPI, {
-            method: 'delete'
+        const response = await fetch(DjangoAPI, {
+            method: 'DELETE',
         });
-        if (!Response.ok) {
-            throw new Error(`HTTP error... do better ${Response.status}`)
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        await Response.json();
-
+        const data = await response.json();
+        console.log(data);
+        return data;
     } catch (error) {
-        console.error('delete recipe returning error: ', error);
-        return {error: error.message}
-        
+        console.error('Failed to delete recipes:', error.message);
+        return { error: error.message };
     }
-}
-
-// export const updateRecipesFromDjango = async () => {
-//     try {
-        
-//     } catch (error) {
-        
-//     }
-// }
+};

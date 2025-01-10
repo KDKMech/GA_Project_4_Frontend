@@ -6,7 +6,7 @@ import { getRecipesFromDjango } from './CookBookService'
 const buttonClickTest = async (event) => {
   
   
-  const results =  await getRecipesFromDjango()
+  const results = await [getRecipesFromDjango()]
 
   console.log(results);
   
@@ -27,6 +27,9 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
         <button onClick={buttonClickTest}>function test</button>
+        <ul>
+          {}
+        </ul>
       </div>
       <h1>Vite + React</h1>
       <div className="card">
