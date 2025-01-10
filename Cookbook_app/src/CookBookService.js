@@ -16,6 +16,18 @@ export const getRecipesFromDjango = async () => {
     }
 };
 
+//update request
+// export const updateRecipesFromDjango = async (id, bodyInfo) => {
+//     try {
+//         const updatedRecipe = 
+//     } catch (error) {
+        
+//     }
+// }
+
+
+
+
 // Delete request
 export const deleteRecipesFromDjango = async () => {
     try {
