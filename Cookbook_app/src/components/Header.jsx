@@ -1,10 +1,11 @@
 import React from 'react';
 
+
 function Header() {
   return (
     <header style={styles.header}>
       <img 
-        src="" 
+        src="./images/header.png" 
         alt="Company Logo" 
         style={styles.logo} 
       />
