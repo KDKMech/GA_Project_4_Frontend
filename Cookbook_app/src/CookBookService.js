@@ -47,7 +47,7 @@ export const updateRecipesFromDjango = async (id, bodyInfo) => {
   try {
     const response = await fetch(`${DjangoAPI}/${id}`, {
       method: "PUT",
-    //   headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(bodyInfo),
     });
     if (!response.ok) {

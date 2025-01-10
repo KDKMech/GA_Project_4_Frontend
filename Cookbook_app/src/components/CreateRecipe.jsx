@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
+// import { createRecipeFromDjango } from '../CookBookService';
+
 function RecipeForm({ createRecipeFromDjango }) {
   const [formData, setFormData] = useState({
     name: '',
     ingredients: '',
-    direction: '',
+    directions: '',
     cooktime: '',
   });
 
@@ -26,7 +28,7 @@ function RecipeForm({ createRecipeFromDjango }) {
     setFormData({
       name: '',
       ingredients: '',
-      direction: '',
+      directions: '',
       cooktime: '',
     });
   };
@@ -55,11 +57,11 @@ function RecipeForm({ createRecipeFromDjango }) {
         />
       </div>
       <div>
-        <label htmlFor="direction">Direction:</label>
+        <label htmlFor="directions">Directions:</label>
         <textarea
-          id="direction"
-          name="direction"
-          value={formData.direction}
+          id="directions"
+          name="directions"
+          value={formData.directions}
           onChange={handleChange}
           required
         />
@@ -72,7 +74,7 @@ function RecipeForm({ createRecipeFromDjango }) {
           name="cooktime"
           value={formData.cooktime}
           onChange={handleChange}
-          required
+          // required
         />
       </div>
       <button type="submit">Create Recipe</button>
