@@ -5,7 +5,7 @@ const Navbar = ({handleSelection}) => {
         <nav className="bg-white">
             <button onClick={handleSelection} className="btn btn-outline-dark m-3" value="Home">Home</button>
             <button onClick={handleSelection} className="btn btn-outline-dark m-3" value="RecipeList">Recipe Index</button>
-            <button onClick={handleSelection} className="btn btn-outline-dark m-3" value="CreateRecipe">Add Recipe</button>
+            <button onClick={handleSelection} className="btn btn-outline-dark m-3" value="RecipeForm">Add Recipe</button>
         </nav>
     )
 }

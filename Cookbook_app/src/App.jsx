@@ -2,17 +2,18 @@ import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
-import { getRecipesFromDjango } from './CookBookService'
+import {getRecipesFromDjango, createRecipeFromDjango } from './CookBookService'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
+
 // import RecipeList from './components/RecipeList'
 // import CreateRecipe from './components/CreateRecipe'
 
 // bootstrap import link
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import RecipeForm from './components/CreateRecipe'
 
 
 
@@ -30,7 +31,7 @@ function App() {
       <div className="bg-white">
            {currentPage === "Home" ? <Home /> : ""}
            {currentPage === "RecipeList" ? <RecipeList/> : ""}
-           {currentPage === "CreateRecipe" ? <CreateRecipe/> : ""} 
+           {currentPage === "RecipeForm" ? <RecipeForm createRecipeFromDjango={createRecipeFromDjango}/> : ""} 
       </div>
       <Footer/>
     </div>
