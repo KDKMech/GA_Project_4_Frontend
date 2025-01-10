@@ -1,4 +1,4 @@
-const DjangoAPI = 'https://34.228.156.43:8000/api/recipe'
+const DjangoAPI = '34.228.156.43:8000/api/recipe'
 
 
 

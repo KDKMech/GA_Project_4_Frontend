@@ -3,6 +3,16 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { getRecipesFromDjango } from './CookBookService'
+const buttonClickTest = async (event) => {
+  
+  
+  const results =  await getRecipesFromDjango()
+
+  console.log(results);
+  
+}
+
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -16,6 +26,7 @@ function App() {
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
+        <button onClick={buttonClickTest}>function test</button>
       </div>
       <h1>Vite + React</h1>
       <div className="card">
