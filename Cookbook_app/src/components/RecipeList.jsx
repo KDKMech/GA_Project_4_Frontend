@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { deleteRecipesFromDjango, updateRecipesFromDjango } from "../CookBookService";
 
-function RecipeList({ getRecipesFromDjango }) {
+function RecipeList({ getRecipesFromDjango, handleSection, setData}) {
     const [recipes, setRecipes] = useState([]);
     
     // Function to fetch all recipes
@@ -20,12 +20,23 @@ useEffect(() => {
     fetchAllRecipes();
 }, []);
 
-const handleClick = (e) => {
-    e.preventDefault()
-    updateRecipesFromDjango()    
+// const handleClick = (e) => {
+//     e.preventDefault()
+//     // updateRecipesFromDjango()    
 
+// }
+const handleClick = (e, recipe) => {
+    setData({
+        id: recipe.id,
+        name: recipe.name,
+        ingredients: recipe.ingredients,
+        directions: recipe.directions,
+        cooktime: recipe.cooktime
+    })
+    handleSection(e)
+    
+    
 }
-
 
 return (
     <div>
@@ -46,8 +57,8 @@ return (
               <p>
                 <strong>Cook Time:</strong> {recipe.cooktime} minutes
               </p>
-              <button onClick={handleClick} value="UpdateRecipe">update</button>
-              <button onClick={handleClick} value="DeleteRecipe">delete</button>
+              <button onClick={(e) => handleClick(e, recipe)} value="UpdateRecipe">update</button>
+              {/* <button onClick={handleClick} value="DeleteRecipe">delete</button> */}
             </li>
           ))}
         </ul>
@@ -63,33 +74,43 @@ export default RecipeList;
 // // import { getRecipesFromDjango } from "../CookBookService";
 
 // const RecipeList = ({recipes}) => {
-//   //   const data = getRecipesFromDjango();
-//   //   if (!data) {
-//   //     return <p>Loading...</p>
-//   //   }
-//   //   console.log(data);
-//   console.log(recipes);
-
-//   return (
-//     <>
-//       <ul>
-//         {recipes.map((recipe, index) => (
-//           <li id="RecipeCardItem" key={index}>
-//             <RecipeCard data={recipe} />
-//           </li>
-//         ))}
-//       </ul>
-//     </>
-//   );
-// };
-// // RecipeList.propTypes = {
-// //     recipes: PropTypes.array.isRequired
-// // };
-
-// export default RecipeList;
-// // const listRecipes = () => {
-// // }
-// // listRecipes()
-
-// Sufian Bhatti
-// :headphones:  10:47 AM
+    //   //   const data = getRecipesFromDjango();
+    //   //   if (!data) {
+        //   //     return <p>Loading...</p>
+        //   //   }
+        //   //   console.log(data);
+        //   console.log(recipes);
+        
+        //   return (
+            //     <>
+            //       <ul>
+            //         {recipes.map((recipe, index) => (
+                //           <li id="RecipeCardItem" key={index}>
+                //             <RecipeCard data={recipe} />
+                //           </li>
+                //         ))}
+                //       </ul>
+                //     </>
+                //   );
+                // };
+                // // RecipeList.propTypes = {
+                    // //     recipes: PropTypes.array.isRequired
+                    // // };
+                    
+                    // export default RecipeList;
+                    // // const listRecipes = () => {
+                        // // }
+                        // // listRecipes()
+                        
+                        // Sufian Bhatti
+                        // :headphones:  10:47 AM
+                        // console.log(data);
+                        // const arrayOfRecipeData = (recipe) => {
+                        //     const recipeToUpdate = {
+                        //         name: recipe.name,
+                        //         ingredients: recipe.ingredients,
+                        //         directions: recipe.directions,
+                        //         cooktime: recipe.cooktime
+                        //     }
+                        //     return recipeToUpdate
+                        // }
