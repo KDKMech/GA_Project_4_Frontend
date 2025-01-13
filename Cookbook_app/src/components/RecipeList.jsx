@@ -25,6 +25,24 @@ useEffect(() => {
 //     // updateRecipesFromDjango()    
 
 // }
+
+const handleDelete = async (id) => {
+  if (window.confirm("Are you sure you want to delete this recipe?")) {
+    try {
+      await deleteRecipesFromDjango(id);
+      alert("Recipe deleted successfully!");
+      fetchAllRecipes(); // Refresh the recipes list
+    } catch (error) {
+      console.error("Error deleting recipe:", error);
+    }
+  }
+};
+
+// const DeleteRecipe = (id) => {
+//   const recipeToBeDeleted = recipes.filter((recipe) => recipe.id !== id)
+//   setRecipes(recipeToBeDeleted)
+// }
+
 const handleClick = (e, recipe) => {
     setData({
         id: recipe.id,
@@ -58,7 +76,7 @@ return (
                 <strong>Cook Time:</strong> {recipe.cooktime} minutes
               </p>
               <button onClick={(e) => handleClick(e, recipe)} value="UpdateRecipe">update</button>
-              {/* <button onClick={handleClick} value="DeleteRecipe">delete</button> */}
+              <button onClick={() => handleDelete(recipe.id)}>Delete</button>
             </li>
           ))}
         </ul>
