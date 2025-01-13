@@ -1,14 +1,18 @@
 import React from "react";
 
-export const RecipeCard = (props) => {
+export const RecipeCard = (data) => {
   return (
     <>
       <ul className="recipeInfo">
-        <li>name: {props.recipe.name}</li>
-        <li>Cooktime: {props.recipe.cooktime}</li>
-        <li>Ingredients: {props.recipe.ingredients} </li>
-        <li>Instructions: {props.recipe.instructions}</li>
+        <li>name: {data.name}</li>
+        <li>Cooktime: {data.cooktime}</li>
+        <li>Ingredients: {data.ingredients} </li>
+        <li>Instructions: {data.instructions}</li>
       </ul>
+      <button>update</button>
+      <button>delete</button>
+        
     </>
   );
 };
+
