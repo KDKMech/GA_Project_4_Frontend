@@ -43,11 +43,11 @@ function UpdateRecipe({ updateRecipeInDjango, initialRecipe }) {
           />
         </div>
         <div>
-          <label htmlFor="direction">Direction:</label>
+          <label htmlFor="directions">Direction:</label>
           <textarea
             id="direction"
             name="direction"
-            value={recipe.direction}
+            value={recipe.directions}
             onChange={handleChange}
             required
           />

@@ -1,14 +1,14 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
-import {getRecipesFromDjango, createRecipeFromDjango } from './CookBookService'
+import {getRecipesFromDjango, createRecipeFromDjango, updateRecipesFromDjango, deleteRecipesFromDjango } from './CookBookService'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
 
-// import RecipeList from './components/RecipeList'
+import RecipeList from './components/RecipeList'
 // import CreateRecipe from './components/CreateRecipe'
 
 // bootstrap import link
@@ -17,20 +17,30 @@ import RecipeForm from './components/CreateRecipe'
 
 
 
+
 function App() {
   const [currentPage, setCurrentPage] = useState("Home");
-
+  const [recipes, setRecipes] = useState([]);
+  
+  const fetchDataForRecipes = async () => {
+    const data = await getRecipesFromDjango()
+    setRecipes(data)
+  }
   const handleSelection = (event) => {
     setCurrentPage(event.target.value);
   }
   
+useEffect(() => {
+  fetchDataForRecipes()
+})
+
   return (
     <div className="bg-white">
       <Header/>
       <Navbar handleSelection={handleSelection}/>
       <div className="bg-white">
            {currentPage === "Home" ? <Home /> : ""}
-           {currentPage === "RecipeList" ? <RecipeList/> : ""}
+           {currentPage === "RecipeList" ? <RecipeList getRecipesFromDjango={getRecipesFromDjango}/> : ""}
            {currentPage === "RecipeForm" ? <RecipeForm createRecipeFromDjango={createRecipeFromDjango}/> : ""} 
       </div>
       <Footer/>
