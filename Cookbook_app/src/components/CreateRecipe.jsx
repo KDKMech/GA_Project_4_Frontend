@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-
-// import { createRecipeFromDjango } from '../CookBookService';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function RecipeForm({ createRecipeFromDjango }) {
   const [formData, setFormData] = useState({
@@ -22,9 +21,7 @@ function RecipeForm({ createRecipeFromDjango }) {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Call the function with the form data
     createRecipeFromDjango(formData);
-    // Clear the form
     setFormData({
       name: '',
       ingredients: '',
@@ -34,53 +31,71 @@ function RecipeForm({ createRecipeFromDjango }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="name">Recipe Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
+    <div className="d-flex justify-content-center align-items-center vh-100 bg-dark">
+      <div className="card bg-light shadow-lg p-4" style={{ width: '30rem' }}>
+        <h2 className="text-center text-dark mb-4">Create Recipe</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="name" className="form-label">
+              Recipe Name:
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="form-control"
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="ingredients" className="form-label">
+              Ingredients:
+            </label>
+            <textarea
+              id="ingredients"
+              name="ingredients"
+              value={formData.ingredients}
+              onChange={handleChange}
+              className="form-control"
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="directions" className="form-label">
+              Directions:
+            </label>
+            <textarea
+              id="directions"
+              name="directions"
+              value={formData.directions}
+              onChange={handleChange}
+              className="form-control"
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="cooktime" className="form-label">
+              Cook Time (minutes):
+            </label>
+            <input
+              type="number"
+              id="cooktime"
+              name="cooktime"
+              value={formData.cooktime}
+              onChange={handleChange}
+              className="form-control"
+              required
+            />
+          </div>
+          <button type="submit" className="btn btn-dark w-100">
+            Create Recipe
+          </button>
+        </form>
       </div>
-      <div>
-        <label htmlFor="ingredients">Ingredients:</label>
-        <textarea
-          id="ingredients"
-          name="ingredients"
-          value={formData.ingredients}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="directions">Directions:</label>
-        <textarea
-          id="directions"
-          name="directions"
-          value={formData.directions}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="cooktime">Cook Time (minutes):</label>
-        <input
-          type="number"
-          id="cooktime"
-          name="cooktime"
-          value={formData.cooktime}
-          onChange={handleChange}
-          // required
-        />
-      </div>
-      <button type="submit">Create Recipe</button>
-    </form>
+    </div>
   );
 }
-
 
 export default RecipeForm;
