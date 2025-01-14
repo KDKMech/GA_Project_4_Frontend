@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+
 function UpdateRecipe({ updateRecipeInDjango, initialRecipe }) {
   
   
@@ -35,8 +36,8 @@ function UpdateRecipe({ updateRecipeInDjango, initialRecipe }) {
   };
   
   return (
-    <div className="d-flex justify-content-center align-center vh-100 my-3 bg-dark">
-      <div className="card bg-light shadow-lg p-4 my-5" style={{width: '30rem', height: '35rem'}}>
+    <div className="d-flex justify-content-center align-items-center vh-100 bg-dark">
+      <div className="card bg-light shadow-lg p-4" style={{width: '30rem'}}>
        <h2 className="text-center text-dark mb-4">Update {recipe.name}</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
@@ -89,7 +90,7 @@ function UpdateRecipe({ updateRecipeInDjango, initialRecipe }) {
         className="btn btn-dark w-100"
         type="submit">
           Update Recipe
-        </button>
+        </button>  
       </form> 
       </div>
     </div>
