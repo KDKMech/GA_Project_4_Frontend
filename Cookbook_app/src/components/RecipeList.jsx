@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { deleteRecipesFromDjango, updateRecipesFromDjango } from "../CookBookService";
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function RecipeList({ getRecipesFromDjango, handleSection, setData}) {
     const [recipes, setRecipes] = useState([]);
@@ -62,9 +63,10 @@ return (
       {recipes.length === 0 ? (
           <p>No recipes found.</p>
         ) : (
-            <ul>
+          <div className="card">
+            <ul className="d-flex flex-wrap flex-row list-group">
           {recipes.map((recipe) => (
-              <li key={recipe.id} id="RecipeCardItem">
+              <li key={recipe.id} id="RecipeCardItem" className="list-group-item" style={{width: '18rem'}}>
               <h3>{recipe.name}</h3>
               <p>
                 <strong>Ingredients:</strong> {recipe.ingredients}
@@ -80,6 +82,7 @@ return (
             </li>
           ))}
         </ul>
+        </div>
       )}
     </div>
   );
