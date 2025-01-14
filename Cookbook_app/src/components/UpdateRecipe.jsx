@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function UpdateRecipe({ updateRecipeInDjango, initialRecipe }) {
   
@@ -34,55 +35,63 @@ function UpdateRecipe({ updateRecipeInDjango, initialRecipe }) {
   };
   
   return (
-    <div>
-      <h2>Update Recipe</h2>
+    <div className="d-flex justify-content-center align-center vh-100 my-3 bg-dark">
+      <div className="card bg-light shadow-lg p-4 my-5" style={{width: '30rem', height: '35rem'}}>
+       <h2 className="text-center text-dark mb-4">Update {recipe.name}</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Recipe Name:</label>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="name">Recipe Name:</label>
           <input
             type="text"
             id="name"
             name="name"
+            className="form-control"
             value={recipe.name}
             onChange={handleChange}
             required
             />
         </div>
-        <div>
-          <label htmlFor="ingredients">Ingredients:</label>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="ingredients">Ingredients:</label>
           <textarea
             id="ingredients"
             name="ingredients"
+            className="form-control"
             value={recipe.ingredients}
             onChange={handleChange}
             required
             />
         </div>
-        <div>
-          <label htmlFor="directions">Direction:</label>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="directions">Direction:</label>
           <textarea
             id="directions"
             name="directions"
+            className="form-control"
             value={recipe.directions}
             onChange={handleChange}
             required
             />
         </div>
-        <div>
-          <label htmlFor="cooktime">Cook Time (minutes):</label>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="cooktime">Cook Time (minutes):</label>
           <input
             type="number"
             id="cooktime"
             name="cooktime"
+            className="form-control"
             value={recipe.cooktime}
             onChange={handleChange}
             required
             />
         </div>
-        <button type="submit">
+        <button 
+        className="btn btn-dark w-100"
+        type="submit">
           Update Recipe
         </button>
-      </form>
+      </form> 
+      </div>
     </div>
   );
 }

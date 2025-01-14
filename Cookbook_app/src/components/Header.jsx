@@ -7,7 +7,7 @@ function Header() {
       <img 
         src="./images/header.png" 
         alt="Company Logo" 
-        className="rounded mx-auto d-block"
+        className="mx-auto d-block"
       />
     </header>
   );
